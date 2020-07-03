@@ -10,8 +10,6 @@ class BluK extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          primarySwatch: Colors.white, secondaryHeaderColor: Colors.red),
       home: MagazinePage(),
       routes: routes,
     );
