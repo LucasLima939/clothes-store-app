@@ -31,11 +31,8 @@ class CustomDrawer extends StatelessWidget {
                     Positioned(
                       top: 8.0,
                       left: 0.0,
-                      child: Text(
-                        "Blu K",
-                        style: TextStyle(
-                            fontSize: 34.0, fontWeight: FontWeight.bold),
-                      ),
+                      child: Image.network(
+                          'https://firebasestorage.googleapis.com/v0/b/model-project-3688a.appspot.com/o/blu_k_logo.png?alt=media&token=d55778e9-106c-4398-9be1-db01fed4cc4f'),
                     ),
                     Positioned(
                       left: 0.0,

@@ -6,25 +6,28 @@ import 'package:project_blu_k/widgets/custom_drawer.dart';
 class CategoriesTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: Firestore.instance.collection("clothes").getDocuments(),
-      builder: (context, snapshot) {
-        switch (snapshot.connectionState) {
-          case ConnectionState.none:
-          case ConnectionState.waiting:
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          default:
-            return ListView.builder(
-              padding: EdgeInsets.all(4.0),
-              itemCount: snapshot.data.documents.length,
-              itemBuilder: (context, index) {
-                return CategoryCard(snapshot.data.documents[index]);
-              },
-            );
-        }
-      },
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: FutureBuilder(
+        future: Firestore.instance.collection("clothes").getDocuments(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+            case ConnectionState.waiting:
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            default:
+              return ListView.builder(
+                itemCount: snapshot.data.documents.length,
+                itemBuilder: (BuildContext context, int i) {
+                  var item = snapshot.data.documents[i];
+                  return CategoryCard(item);
+                },
+              );
+          }
+        },
+      ),
     );
   }
 }

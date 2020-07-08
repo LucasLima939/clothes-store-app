@@ -43,6 +43,8 @@ dependencies:
   google_sign_in: ^4.5.1
   firebase_storage: ^3.1.6
   firebase_auth: ^0.16.1
+  carousel_pro: ^1.0.0
+  carousel_slider: ^2.1.0
 
 dev_dependencies:
   flutter_test:

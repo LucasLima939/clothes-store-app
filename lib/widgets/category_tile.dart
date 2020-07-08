@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:project_blu_k/screens/category_screen.dart';
+import 'package:project_blu_k/utils/nav.dart';
 
 class CategoryTile extends StatelessWidget {
   final DocumentSnapshot snapshot;
@@ -10,7 +12,9 @@ class CategoryTile extends StatelessWidget {
       leading: Image.network(snapshot.data["icon"]),
       title: Text(snapshot.data["title"]),
       trailing: Icon(Icons.keyboard_arrow_right),
-      onTap: () {},
+      onTap: () {
+        push(context, CategoryScreen(snapshot));
+      },
     );
   }
 }

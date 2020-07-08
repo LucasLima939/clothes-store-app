@@ -1,16 +1,17 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:project_blu_k/layout/layout_theme.dart';
-import 'package:project_blu_k/models/products_list.dart';
 
 import '../trocar_layout.dart';
 
-class MagazinePage extends StatefulWidget {
+class MagazineScreen extends StatefulWidget {
   @override
-  _MagazinePageState createState() => _MagazinePageState();
+  _MagazineScreenState createState() => _MagazineScreenState();
 }
 
-class _MagazinePageState extends State<MagazinePage> {
+class _MagazineScreenState extends State<MagazineScreen> {
+  
   bool _showAppbar = true; //this is to show app bar
   ScrollController _scrollBottomBarController =
       new ScrollController(); // set controller on scrolling
@@ -170,3 +171,4 @@ class _MagazinePageState extends State<MagazinePage> {
     );
   }
 }
+*/
