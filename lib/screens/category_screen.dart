@@ -45,7 +45,7 @@ class CategoryScreen extends StatelessWidget {
                   GridView.builder(
                     padding: EdgeInsets.all(4.0),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
+                      crossAxisCount: 3,
                       mainAxisSpacing: 4.0,
                       crossAxisSpacing: 4.0,
                       childAspectRatio: 0.65,
@@ -58,7 +58,18 @@ class CategoryScreen extends StatelessWidget {
                       );
                     },
                   ),
-                  MagazineScreen(),
+                  ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: snapshot.data.documents.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return InkWell(
+                          onTap: () {},
+                          child: Image.network(
+                            snapshot.data.documents[index]["images"][0],
+                            fit: BoxFit.fill,
+                          ),
+                        );
+                      }),
                 ],
               );
             }

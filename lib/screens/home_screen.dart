@@ -26,14 +26,32 @@ class HomeScreen extends StatelessWidget {
           drawer: CustomDrawer(_pageController),
           body: SafeArea(child: CategoriesTab()),
         ),
-        Container(
-          color: Colors.white,
+        Scaffold(
+          appBar: AppBar(
+            backgroundColor: LayoutColor.primaryColor,
+            title: Text("Nossas Lojas"),
+            centerTitle: true,
+          ),
+          drawer: CustomDrawer(_pageController),
+          body: Center(child: CircularProgressIndicator()),
         ),
-        Container(
-          color: Colors.green,
+        Scaffold(
+          appBar: AppBar(
+            backgroundColor: LayoutColor.primaryColor,
+            title: Text("Seus Pedidos"),
+            centerTitle: true,
+          ),
+          drawer: CustomDrawer(_pageController),
+          body: Center(child: Text("Você ainda não possui nenhum pedido!")),
         ),
-        Container(
-          color: Colors.grey,
+        Scaffold(
+          appBar: AppBar(
+            backgroundColor: LayoutColor.primaryColor,
+            title: Text("Outlet"),
+            centerTitle: true,
+          ),
+          drawer: CustomDrawer(_pageController),
+          body: SafeArea(child: CategoriesTab()),
         ),
       ],
     );

@@ -32,9 +32,8 @@ class ProductTile extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       product.title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                      ),
+                      style:
+                          TextStyle(fontWeight: FontWeight.w500, fontSize: 8),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
@@ -43,7 +42,7 @@ class ProductTile extends StatelessWidget {
                       "R\$ ${product.price.toStringAsFixed(2)}",
                       style: TextStyle(
                         color: LayoutColor.primaryColor,
-                        fontSize: 19.0,
+                        fontSize: 10,
                         fontWeight: FontWeight.bold,
                       ),
                       maxLines: 1,
