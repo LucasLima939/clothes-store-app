@@ -1,5 +1,6 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:project_blu_k/counter_icon.dart';
 import 'package:project_blu_k/layout/layout_theme.dart';
 import 'package:project_blu_k/models/product_data.dart';
 
@@ -109,18 +110,11 @@ class _ProductScreenState extends State<ProductScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 Row(children: [
-                  FlatButton(
-                    color: LayoutColor.primaryColor,
-                    onPressed: () {},
-                    child: Text(
-                      'Adicionar ao Carrinho',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
+                  SafeArea(
+                    child: CounterIcon(),
                   ),
                 ]),
               ],
