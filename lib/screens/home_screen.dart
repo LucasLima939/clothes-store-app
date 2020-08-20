@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project_blu_k/layout/layout_theme.dart';
-import 'package:project_blu_k/service/vtex_api_comunicator_blu_k_service.dart';
 import 'package:project_blu_k/tabs/categories_tab.dart';
 import 'package:project_blu_k/tabs/home_tab.dart';
 import 'package:project_blu_k/widgets/custom_drawer.dart';
@@ -11,17 +10,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    VtexApiComunicatorBluKService service = VtexApiComunicatorBluKService();
-    service.getProducts();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   final _pageController = PageController();
   @override

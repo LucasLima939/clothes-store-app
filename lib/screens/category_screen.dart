@@ -1,14 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:project_blu_k/layout/layout_theme.dart';
-import 'package:project_blu_k/models/product_data.dart';
-import 'package:project_blu_k/screens/maganize_screen.dart';
-import 'package:project_blu_k/screens/magazine_screen.dart';
+import 'package:project_blu_k/models/products/product.dart';
+import 'package:project_blu_k/service/vtex_api_comunicator_blu_k_service.dart';
 import 'package:project_blu_k/widgets/product_tile.dart';
 
-class CategoryScreen extends StatelessWidget {
+class CategoryScreen extends StatefulWidget {
   final DocumentSnapshot snapshot;
   CategoryScreen(this.snapshot);
+
+  @override
+  _CategoryScreenState createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen> {
+  
+    VtexApiComunicatorBluKService service = VtexApiComunicatorBluKService();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -16,7 +23,7 @@ class CategoryScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: LayoutColor.primaryColor,
-          title: Text(snapshot.data["title"]),
+          title: Text(widget.snapshot.data["title"]),
           centerTitle: true,
           bottom: TabBar(tabs: <Widget>[
             Tab(
@@ -27,12 +34,8 @@ class CategoryScreen extends StatelessWidget {
             ),
           ]),
         ),
-        body: FutureBuilder<QuerySnapshot>(
-          future: Firestore.instance
-              .collection("clothes")
-              .document(snapshot.documentID)
-              .collection("items")
-              .getDocuments(),
+        body: FutureBuilder<List<ProductData>>(
+          future: service.getProducts(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return Center(
@@ -50,22 +53,21 @@ class CategoryScreen extends StatelessWidget {
                       crossAxisSpacing: 4.0,
                       childAspectRatio: 0.65,
                     ),
-                    itemCount: snapshot.data.documents.length,
+                    itemCount: snapshot.data.length,
                     itemBuilder: (context, index) {
                       return ProductTile(
-                        ProductData.fromDocument(
-                            snapshot.data.documents[index]),
+                            snapshot.data[index],
                       );
                     },
                   ),
                   ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: snapshot.data.documents.length,
+                      itemCount: snapshot.data.length,
                       itemBuilder: (BuildContext context, int index) {
                         return InkWell(
                           onTap: () {},
                           child: Image.network(
-                            snapshot.data.documents[index]["images"][0],
+                            snapshot.data[index].items[0].images[0].imageUrl,
                             fit: BoxFit.fill,
                           ),
                         );

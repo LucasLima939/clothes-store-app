@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_blu_k/counter_icon.dart';
 import 'package:project_blu_k/layout/layout_theme.dart';
-import 'package:project_blu_k/models/product_data.dart';
+import 'package:project_blu_k/models/products/product.dart';
 import 'package:project_blu_k/screens/product_screen.dart';
 import 'package:project_blu_k/utils/nav.dart';
 
@@ -10,6 +9,7 @@ class ProductTile extends StatelessWidget {
   ProductTile(this.product);
   @override
   Widget build(BuildContext context) {
+    final _prod = product.items[0];
     return InkWell(
       onTap: () {
         push(context, ProductScreen(product));
@@ -22,7 +22,7 @@ class ProductTile extends StatelessWidget {
             AspectRatio(
               aspectRatio: 0.85,
               child: Image.network(
-                product.images[0],
+                _prod.images[0].imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
@@ -32,7 +32,7 @@ class ProductTile extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      product.title,
+                      product.productName,
                       style:
                           TextStyle(fontWeight: FontWeight.w500, fontSize: 8),
                       maxLines: 2,
@@ -40,7 +40,7 @@ class ProductTile extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     Text(
-                      "R\$ ${product.price.toStringAsFixed(2)}",
+                      "R\$ ${_prod.sellers[0].commertialOffer.price.toStringAsFixed(2)}",
                       style: TextStyle(
                         color: LayoutColor.primaryColor,
                         fontSize: 10,
