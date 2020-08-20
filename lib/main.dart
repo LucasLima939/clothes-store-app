@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_blu_k/screens/home_screen.dart';
 import 'package:project_blu_k/screens/maganize_screen.dart';
+import 'package:project_blu_k/service/vtex_api_comunicator_blu_k_service.dart';
 import 'package:project_blu_k/tabs/home_tab.dart';
 
 void main() => runApp(BluK());
